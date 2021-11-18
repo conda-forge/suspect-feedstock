@@ -1,36 +1,38 @@
 {% set name = "suspect" %}
 {% set version = "0.4.4" %}
 
+
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/suspect-{{ version }}.tar.gz
   sha256: 6055acad19debd15b9ab22362c7c573d147e1e93b6a116459f3b48645b0f28e3
 
 build:
-  number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
-  skip: true  # [py2k]
+  number: 1
+  noarch: python
+  entry_points:
+    - anonymize_twix = suspect.scripts.anonymize:anonymize_twix
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - python
     - pip
+    - python >=3.6
   run:
-    - python
-    - numpy
-    - scipy
-    - matplotlib-base
+    - python >=3.6
     - lmfit
+    - nibabel
+    - numpy
     - parse
     - parsley
-    - nibabel
-    - asteval
     - pydicom
     - pywavelets
-    - six
+    - scipy
+    - matplotlib-base
+    - asteval
     - uncertainties
 
 test:
@@ -43,6 +45,12 @@ test:
     - suspect.processing
     - suspect.scripts
     - suspect.viz
+    - suspect.basis
+  commands:
+    - pip check
+    - anonymize_twix --help
+  requires:
+    - pip
 
 about:
   home: https://github.com/openmrslab/suspect
