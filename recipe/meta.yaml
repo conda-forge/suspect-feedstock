@@ -1,5 +1,5 @@
 {% set name = "suspect" %}
-{% set version = "0.4.4" %}
+{% set version = "0.5.1" %}
 
 
 package:
@@ -8,10 +8,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/suspect-{{ version }}.tar.gz
-  sha256: 6055acad19debd15b9ab22362c7c573d147e1e93b6a116459f3b48645b0f28e3
+  sha256: 4f938510cc95bd74bfdcd98528768c89483d55f592739ad8c37f3d05ff8a8922
 
 build:
-  number: 1
+  number: 0
   noarch: python
   entry_points:
     - anonymize_twix = suspect.scripts.anonymize:anonymize_twix
