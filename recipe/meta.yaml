@@ -7,11 +7,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/suspect-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/suspect-{{ version }}.tar.gz
   sha256: 273c6f39e255986ea4df20fe5bb7bbb37af251331246e77c1d22cf1ae004b266
 
 build:
-  number: 0
+  number: 1
   noarch: python
   entry_points:
     - anonymize_twix = suspect.scripts.anonymize:anonymize_twix
@@ -20,9 +20,9 @@ build:
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - lmfit
     - nibabel
     - numpy
@@ -51,6 +51,7 @@ test:
     - anonymize_twix --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/openmrslab/suspect
