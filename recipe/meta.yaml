@@ -1,5 +1,5 @@
 {% set name = "suspect" %}
-{% set version = "0.6.0" %}
+{% set version = "0.6.1" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/suspect-{{ version }}.tar.gz
-  sha256: e98f5b9e2edf8de05a4885aff6f3d011c239f30010bea31cb283aad32f4c39e7
+  sha256: d4c8dcf6693cf4d23feef0f086c395e3f2e5452fe870b2e55b460892d3d1511e
 
 build:
   number: 0
